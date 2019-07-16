@@ -14,5 +14,5 @@ Add jitpack.io to your root gradle file (project level) :
 Add the dependency in your app build.gradle
 
     dependencies {
-       implementation 'com.github.yehiahd:FastSave-Android:1.0.6'
+       implementation 'com.github.shreenivas-ch:RetrofitLogger:1.0'
     }
