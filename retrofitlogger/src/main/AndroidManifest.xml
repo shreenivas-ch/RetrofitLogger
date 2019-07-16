@@ -1,0 +1,12 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.shree.retrofitlogger">
+
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+
+    <application >
+        <activity android:theme="@style/DialogueTheme" android:name=".DebuggerOptionsActivity"/>
+        <activity android:name=".LogsActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+    </application>
+
+</manifest>
+

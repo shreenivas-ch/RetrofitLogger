@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white">
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcLogs"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/rl_search"
+            tools:listitem="@layout/item_log"/>
+
+    <RelativeLayout
+            android:id="@+id/rl_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true">
+
+        <RelativeLayout
+                android:layout_toLeftOf="@+id/imgMenu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            <EditText
+                    android:id="@+id/et_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_25sdp"
+                    android:layout_margin="@dimen/_3sdp"
+                    android:background="@drawable/bg_search_log"
+                    android:hint="Search for log..."
+                    android:imeOptions="actionSearch"
+                    android:inputType="text"
+                    android:paddingLeft="@dimen/_5sdp"
+                    android:paddingTop="@dimen/_5sdp"
+                    android:paddingRight="@dimen/_35sdp"
+                    android:paddingBottom="@dimen/_5sdp"
+                    android:textSize="@dimen/_10sdp"/>
+
+            <ImageView
+
+                    android:layout_marginRight="@dimen/_2sdp"
+                    android:layout_alignParentRight="true"
+                    android:id="@+id/imgClear"
+                    android:layout_centerVertical="true"
+                    android:padding="@dimen/_7sdp"
+                    app:srcCompat="@drawable/ic_clear"
+                    android:layout_width="@dimen/_25sdp"
+                    android:layout_height="@dimen/_25sdp"/>
+
+        </RelativeLayout>
+
+        <ImageView
+                android:padding="@dimen/_3sdp"
+                android:id="@+id/imgMenu"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/_3sdp"
+                app:srcCompat="@drawable/ic_log_menu" tools:ignore="VectorDrawableCompat"/>
+    </RelativeLayout>
+
+    <TextView
+            android:id="@+id/txtNoLogs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:padding="@dimen/_12sdp"
+            android:text="NO LOGS YET"
+            android:textColor="@color/colorPrimaryDark"
+            android:visibility="gone"/>
+</RelativeLayout>
