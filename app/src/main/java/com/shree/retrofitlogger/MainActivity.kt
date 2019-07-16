@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
 
     fun getImages(category: String) {
 
-        val apiService = APIClient.getClient1().create(APIRequests::class.java)
+        val apiService = APIClient.client1.create(APIRequests::class.java)
 
         val call = apiService.getImagesListing(category)
 

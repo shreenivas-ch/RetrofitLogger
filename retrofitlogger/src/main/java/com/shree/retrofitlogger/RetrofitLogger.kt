@@ -118,7 +118,7 @@ class RetrofitLogger {
                 )
             )
             .setWhen(System.currentTimeMillis())
-            .setContentTitle("Click Here for " + getApplicationName() + "Logs ")
+            .setContentTitle("Click Here for " + getApplicationName() + " Logs ")
             .setColor(ContextCompat.getColor(context!!, R.color.colorPrimary))
             .setContentIntent(notifyPendingIntent)
             .setOngoing(true)
