@@ -16,7 +16,8 @@ import java.io.IOException
 
 object APIClient {
 
-    var WEBSERVICE_URL1 = "YOUR BASE URL"
+    var WEBSERVICE_URL1 = "https://p7pqaubg77.execute-api.ap-south-1.amazonaws.com/"
+    //var WEBSERVICE_URL1 = "YOUR BASE URL"
     var retrofit: Retrofit? = null
 
     val client1: Retrofit

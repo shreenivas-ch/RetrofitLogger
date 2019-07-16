@@ -46,8 +46,7 @@ class RetrofitLogger {
         }
     }
 
-    private val lifecycleListener: MyLifecycleListener by lazy {
-        MyLifecycleListener(object : AppResumePauseListner {
+    private val lifecycleListener = MyLifecycleListener(object : AppResumePauseListner {
             override fun onResume() {
                 if (BuildConfig.DEBUG) {
                     var is_logs_active = FastSave.getInstance().getString("is_logs_active", null)
@@ -65,7 +64,6 @@ class RetrofitLogger {
             }
 
         })
-    }
 
     private fun setupLifecycleListener() {
         ProcessLifecycleOwner.get().lifecycle.addObserver(lifecycleListener)
