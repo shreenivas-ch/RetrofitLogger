@@ -14,7 +14,6 @@ class MainApplication : MultiDexApplication() {
 
     override fun onCreate() {
         super.onCreate()
-        RetrofitLogger.init(this)
     }
 
     companion object {

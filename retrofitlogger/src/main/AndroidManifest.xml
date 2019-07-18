@@ -6,6 +6,8 @@
     <application >
         <activity android:theme="@style/DialogueTheme" android:name=".DebuggerOptionsActivity"/>
         <activity android:name=".LogsActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <service android:name=".FloatingService"/>
+
     </application>
 
 </manifest>

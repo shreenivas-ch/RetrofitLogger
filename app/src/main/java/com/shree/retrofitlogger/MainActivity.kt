@@ -7,13 +7,11 @@ import com.appsie.wg.requests.APIRequests
 import retrofit2.Call
 import retrofit2.Response
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : RetrofitLoggerActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        RetrofitLogger.getInstance().showDebugOptions()
 
         getImages("morning")
     }
