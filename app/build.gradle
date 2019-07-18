@@ -28,8 +28,8 @@ dependencies {
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'androidx.core:core-ktx:1.0.2'
-    implementation project(path: ':retrofitlogger')
-    //implementation 'com.github.shreenivas-ch:RetrofitLogger:1.0'
+    //implementation project(path: ':retrofitlogger')
+    implementation 'com.github.shreenivas-ch:RetrofitLogger:1.1'
     implementation 'androidx.multidex:multidex:2.0.0'
     implementation 'com.squareup.retrofit2:retrofit:2.3.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
