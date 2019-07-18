@@ -14,20 +14,22 @@ Add jitpack.io to your root gradle file (project level) :
 Add the dependency in your app build.gradle
 
     dependencies {
-       implementation 'com.github.shreenivas-ch:RetrofitLogger:1.0'
+       implementation 'com.github.shreenivas-ch:RetrofitLogger:1.1'
     }
 
 # How To Use
 
-Initialise library in you Application Class
+Extend you Activity with RetrofitLoggerActivity
 
-    class MainApplication : Application() {
+    class MainActivity : RetrofitLoggerActivity() {
 
-        override fun onCreate() {
-            super.onCreate()
-            RetrofitLogger.init(this)
+        override fun onCreate(savedInstanceState: Bundle?) {
+            super.onCreate(savedInstanceState)
+            setContentView(R.layout.activity_main)
         }
     }
+    
+If you have multple activities in your project then Create BaseActivity that extends RetrofitLoggerActivity, then extend all your activities with BaseActivity
     
  Add HttpLoggingInterceptor to Retrofit Client
  
@@ -60,8 +62,3 @@ Initialise library in you Application Class
                 return retrofit!!
             }
             
-   # Show Dialogue to User to enable Logger.
-   
-   User below code in your activity.
-   
-       RetrofitLogger.getInstance().showDebugOptions()
