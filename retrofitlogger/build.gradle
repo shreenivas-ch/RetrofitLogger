@@ -5,6 +5,9 @@ apply plugin: 'kotlin-android'
 ext.support_library_version = '1.0.0-beta01'
 
 android {
+
+    publishNonDefault true
+
     compileSdkVersion 28
 
     compileOptions {

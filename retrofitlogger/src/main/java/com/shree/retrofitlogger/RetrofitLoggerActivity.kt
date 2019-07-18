@@ -145,26 +145,28 @@ abstract class RetrofitLoggerActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-        FastSave.init(this)
-        if (BuildConfig.DEBUG) {
-            var is_logs_active = FastSave.getInstance().getString("is_logs_active", null)
-            if (is_logs_active == null) {
-                apiDebuggingOptions()
-            } else if (is_logs_active == "1") {
-                var is_logs_active_type = FastSave.getInstance().getString("is_logs_active_type", "notification")
-                if (is_logs_active_type == "overlay") {
-                    showOverLayPermission()
-                } else {
-                    generateNotificationForLogs(this@RetrofitLoggerActivity)
+        if (RetrofitLogger.getInstance().getIsActive()) {
+            FastSave.init(this)
+            if (BuildConfig.DEBUG) {
+                var is_logs_active = FastSave.getInstance().getString("is_logs_active", null)
+                if (is_logs_active == null) {
+                    apiDebuggingOptions()
+                } else if (is_logs_active == "1") {
+                    var is_logs_active_type = FastSave.getInstance().getString("is_logs_active_type", "notification")
+                    if (is_logs_active_type == "overlay") {
+                        showOverLayPermission()
+                    } else {
+                        generateNotificationForLogs(this@RetrofitLoggerActivity)
+                    }
                 }
-            }
 
+            }
         }
     }
 
     override fun onPause() {
         super.onPause()
-        if (BuildConfig.DEBUG) {
+        if (RetrofitLogger.getInstance().getIsActive()) {
             stopService(Intent(application, FloatingService::class.java))
             val nMgr = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             nMgr.cancel(-1)

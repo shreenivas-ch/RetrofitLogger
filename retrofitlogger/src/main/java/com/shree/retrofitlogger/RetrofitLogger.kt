@@ -22,16 +22,17 @@ import org.json.JSONObject
 
 class RetrofitLogger {
 
-    private var context: Context? = null
-
     companion object {
 
         private var instance: RetrofitLogger? = null
+        private var context: Context? = null
+        private var isActicve: Boolean = true
 
-        fun init(ctx: Context) {
+        fun init(ctx: Context, isActicve: Boolean = true) {
+            context = ctx
             FastSave.init(ctx)
-            getInstance().setupLifecycleListener()
-            getInstance().context = ctx.applicationContext
+            this.isActicve = isActicve
+            //getInstance().setupLifecycleListener()
         }
 
         fun getInstance(): RetrofitLogger {
@@ -44,26 +45,31 @@ class RetrofitLogger {
             }
             return instance!!
         }
+
+    }
+
+    fun getIsActive(): Boolean {
+        return isActicve
     }
 
     private val lifecycleListener = MyLifecycleListener(object : AppResumePauseListner {
-            override fun onResume() {
-                if (BuildConfig.DEBUG) {
-                    var is_logs_active = FastSave.getInstance().getString("is_logs_active", null)
-                    if (is_logs_active != null && is_logs_active == "1") {
-                        generateNotificationForLogs()
-                    }
+        override fun onResume() {
+            if (BuildConfig.DEBUG) {
+                var is_logs_active = FastSave.getInstance().getString("is_logs_active", null)
+                if (is_logs_active != null && is_logs_active == "1") {
+                    generateNotificationForLogs()
                 }
             }
+        }
 
-            override fun onPause() {
-                if (BuildConfig.DEBUG) {
-                    val nMgr = context?.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-                    nMgr.cancel(-1)
-                }
+        override fun onPause() {
+            if (BuildConfig.DEBUG) {
+                val nMgr = context?.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+                nMgr.cancel(-1)
             }
+        }
 
-        })
+    })
 
     private fun setupLifecycleListener() {
         ProcessLifecycleOwner.get().lifecycle.addObserver(lifecycleListener)
