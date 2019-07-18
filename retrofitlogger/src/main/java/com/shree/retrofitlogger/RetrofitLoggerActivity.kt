@@ -147,19 +147,16 @@ abstract class RetrofitLoggerActivity : AppCompatActivity() {
 
         if (RetrofitLogger.getInstance().getIsActive()) {
             FastSave.init(this)
-            if (BuildConfig.DEBUG) {
-                var is_logs_active = FastSave.getInstance().getString("is_logs_active", null)
-                if (is_logs_active == null) {
-                    apiDebuggingOptions()
-                } else if (is_logs_active == "1") {
-                    var is_logs_active_type = FastSave.getInstance().getString("is_logs_active_type", "notification")
-                    if (is_logs_active_type == "overlay") {
-                        showOverLayPermission()
-                    } else {
-                        generateNotificationForLogs(this@RetrofitLoggerActivity)
-                    }
+            var is_logs_active = FastSave.getInstance().getString("is_logs_active", null)
+            if (is_logs_active == null) {
+                apiDebuggingOptions()
+            } else if (is_logs_active == "1") {
+                var is_logs_active_type = FastSave.getInstance().getString("is_logs_active_type", "notification")
+                if (is_logs_active_type == "overlay") {
+                    showOverLayPermission()
+                } else {
+                    generateNotificationForLogs(this@RetrofitLoggerActivity)
                 }
-
             }
         }
     }
